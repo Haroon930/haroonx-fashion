@@ -480,3 +480,82 @@ footer p {
     color: #fff;
     border-color: #111;
 }
+  
+    /* Product Size Buttons */
+
+.sizes {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.sizes span {
+    color: #ff7a00;
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+.sizes button {
+    background: transparent;
+    color: white;
+    border: 1px solid #555;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.sizes button:hover {
+    background: #ff7a00;
+    border-color: #ff7a00;
+}
+
+.sizes button.selected {
+    background: #ff7a00;
+    border-color: #ff7a00;
+    color: white;
+}
+
+
+/* Product bottom */
+
+.product-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 28px;
+}
+
+.product-bottom strong {
+    font-size: 28px;
+    color: #ff7a00;
+}
+
+.order-btn {
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #ff7a00;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.order-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.order-btn i {
+    font-size: 20px;
+}
