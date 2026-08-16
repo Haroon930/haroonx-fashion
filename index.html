@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+<script src="script.js"></script>
 
 <body>
 
@@ -70,116 +71,306 @@
     </section>
 
 
-    <!-- Products -->
-    <section id="products" class="products">
+<!-- Products -->
+<section id="products" class="products">
 
-        <div class="section-heading">
+    <div class="section-heading">
 
-            <p>OUR COLLECTION</p>
+        <p>OUR COLLECTION</p>
 
-            <h2>
-                Featured Products
-            </h2>
+        <h2>
+            Featured Products
+        </h2>
 
-            <span>
-                Premium styles for every occasion.
-            </span>
+        <span>
+            Premium styles for every occasion.
+        </span>
 
-        </div>
+    </div>
 
 
-        <div class="product-grid">
+    <!-- Product Filters -->
+    <div class="product-filters">
 
-            <div class="product-card">
+        <button class="filter-btn active" onclick="filterProducts('all', this)">
+            All
+        </button>
 
-                <div class="product-image">
-    <img src="jeans.jpg" alt="Premium Jeans">
-</div>
+        <button class="filter-btn" onclick="filterProducts('men', this)">
+            Men
+        </button>
 
-                <div class="product-info">
+        <button class="filter-btn" onclick="filterProducts('women', this)">
+            Women
+        </button>
 
-                    <h3>
-                        Premium Jeans
-                    </h3>
+        <button class="filter-btn" onclick="filterProducts('jeans', this)">
+            Jeans
+        </button>
 
-                    <p>
-                        Comfortable modern-fit denim.
-                    </p>
+        <button class="filter-btn" onclick="filterProducts('pants', this)">
+            Pants
+        </button>
 
-                    <strong>
-                        Rs. 2,099
-                    </strong>
-     <a href="https://wa.me/923295544103"
-   target="_blank"
-   style="display:inline-block !important; visibility:visible !important; opacity:1 !important; background:#ff7a00 !important; color:white !important; padding:12px 24px !important; margin-top:20px !important; border-radius:8px !important; text-decoration:none !important; font-weight:bold !important;">
-    Order Now
-</a>
-                </div>
+        <button class="filter-btn" onclick="filterProducts('jackets', this)">
+            Jackets
+        </button>
 
+    </div>
+
+
+    <div class="product-grid">
+
+
+        <!-- Men's Jeans -->
+        <div class="product-card" data-category="men jeans">
+
+            <div class="product-image">
+                <img src="men-jeans.jpg" alt="Men Jeans">
             </div>
 
+            <div class="product-info">
 
-            <div class="product-card">
+                <span class="product-category">
+                    MEN • JEANS
+                </span>
 
-                <div class="product-image">
-  <img src="jacket.jpg" alt="Premium Jacket">
-</div>
-                <div class="product-info">
+                <h3>
+                    Men Jeans
+                </h3>
 
-                    <h3>
-                        Premium Jacket
-                    </h3>
+                <p>
+                    Premium denim with a comfortable modern fit.
+                </p>
 
-                    <p>
-                        Stylish jacket for every season.
-                    </p>
-
-                    <strong>
-                        Rs. 3,999
-                    </strong>
-                    <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Premium%20Jacket."
-   class="order-btn"
-   target="_blank">
-    Order Now
-</a>
-
+                <div class="product-sizes">
+                    <strong>Sizes:</strong> S, M, L, XL, XXL
                 </div>
 
-            </div>
+                <strong class="product-price">
+                    Rs. 2,499
+                </strong>
 
-
-            <div class="product-card">
-
-                <div class="product-image">
-    <img src="tshirt.jpg" alt="Premium T-Shirt">
-</div>
-
-                <div class="product-info">
-
-                    <h3>
-                        Casual T-Shirt
-                    </h3>
-
-                    <p>
-                        Simple, comfortable and stylish.
-                    </p>
-
-                    <strong>
-                        Rs. 1,499
-                    </strong>
-                    
-      <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Casual%20T-Shirt."
-   class="order-btn"
-   target="_blank">
-    Order Now
-</a>
-                </div>
+                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Men%20Jeans."
+                   class="order-btn"
+                   target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Order Now
+                </a>
 
             </div>
 
         </div>
 
-    </section>
+
+        <!-- Women's Jeans -->
+        <div class="product-card" data-category="women jeans">
+
+            <div class="product-image">
+                <img src="women-jeans.jpg" alt="Women Jeans">
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    WOMEN • JEANS
+                </span>
+
+                <h3>
+                    Women Jeans
+                </h3>
+
+                <p>
+                    Stylish and comfortable jeans for everyday wear.
+                </p>
+
+                <div class="product-sizes">
+                    <strong>Sizes:</strong> S, M, L, XL, XXL
+                </div>
+
+                <strong class="product-price">
+                    Rs. 2,999
+                </strong>
+
+                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Women%20Jeans."
+                   class="order-btn"
+                   target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Order Now
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Men's Jacket -->
+        <div class="product-card" data-category="men jackets">
+
+            <div class="product-image">
+                <img src="men-jacket.jpg" alt="Men Jacket">
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    MEN • JACKETS
+                </span>
+
+                <h3>
+                    Men Jacket
+                </h3>
+
+                <p>
+                    Premium jacket with a modern stylish look.
+                </p>
+
+                <div class="product-sizes">
+                    <strong>Sizes:</strong> S, M, L, XL, XXL
+                </div>
+
+                <strong class="product-price">
+                    Rs. 3,499
+                </strong>
+
+                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Men%20Jacket."
+                   class="order-btn"
+                   target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Order Now
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Women's Jacket -->
+        <div class="product-card" data-category="women jackets">
+
+            <div class="product-image">
+                <img src="women-jacket.jpg" alt="Women Jacket">
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    WOMEN • JACKETS
+                </span>
+
+                <h3>
+                    Women Jacket
+                </h3>
+
+                <p>
+                    Trendy denim jacket designed for modern style.
+                </p>
+
+                <div class="product-sizes">
+                    <strong>Sizes:</strong> S, M, L, XL, XXL
+                </div>
+
+                <strong class="product-price">
+                    Rs. 3,999
+                </strong>
+
+                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Women%20Jacket."
+                   class="order-btn"
+                   target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Order Now
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Men's Pants -->
+        <div class="product-card" data-category="men pants">
+
+            <div class="product-image">
+                <img src="men-pants.jpg" alt="Men Pants">
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    MEN • PANTS
+                </span>
+
+                <h3>
+                    Men Pants
+                </h3>
+
+                <p>
+                    Comfortable premium pants for everyday style.
+                </p>
+
+                <div class="product-sizes">
+                    <strong>Sizes:</strong> S, M, L, XL, XXL
+                </div>
+
+                <strong class="product-price">
+                    Rs. 2,499
+                </strong>
+
+                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Men%20Pants."
+                   class="order-btn"
+                   target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Order Now
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Women's Pants -->
+        <div class="product-card" data-category="women pants">
+
+            <div class="product-image">
+                <img src="women-pants.jpg" alt="Women Pants">
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    WOMEN • PANTS
+                </span>
+
+                <h3>
+                    Women Pants
+                </h3>
+
+                <p>
+                    Modern-fit pants with premium comfort.
+                </p>
+
+                <div class="product-sizes">
+                    <strong>Sizes:</strong> S, M, L, XL, XXL
+                </div>
+
+                <strong class="product-price">
+                    Rs. 2,999
+                </strong>
+
+                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Women%20Pants."
+                   class="order-btn"
+                   target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Order Now
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
 
 
     <!-- About -->
