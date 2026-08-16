@@ -78,9 +78,7 @@
 
         <p>OUR COLLECTION</p>
 
-        <h2>
-            Featured Products
-        </h2>
+        <h2>Featured Products</h2>
 
         <span>
             Premium styles for every occasion.
@@ -88,42 +86,11 @@
 
     </div>
 
-
-    <!-- Product Filters -->
-    <div class="product-filters">
-
-        <button class="filter-btn active" onclick="filterProducts('all', this)">
-            All
-        </button>
-
-        <button class="filter-btn" onclick="filterProducts('men', this)">
-            Men
-        </button>
-
-        <button class="filter-btn" onclick="filterProducts('women', this)">
-            Women
-        </button>
-
-        <button class="filter-btn" onclick="filterProducts('jeans', this)">
-            Jeans
-        </button>
-
-        <button class="filter-btn" onclick="filterProducts('pants', this)">
-            Pants
-        </button>
-
-        <button class="filter-btn" onclick="filterProducts('jackets', this)">
-            Jackets
-        </button>
-
-    </div>
-
-
     <div class="product-grid">
 
 
-        <!-- Men's Jeans -->
-        <div class="product-card" data-category="men jeans">
+        <!-- Men Jeans -->
+        <div class="product-card">
 
             <div class="product-image">
                 <img src="men-jeans.jpg" alt="Men Jeans">
@@ -131,40 +98,47 @@
 
             <div class="product-info">
 
-                <span class="product-category">
-                    MEN • JEANS
-                </span>
+                <small>MEN • JEANS</small>
 
-                <h3>
-                    Men Jeans
-                </h3>
+                <h3>Men Jeans</h3>
 
                 <p>
                     Premium denim with a comfortable modern fit.
                 </p>
 
-                <div class="product-sizes">
-                    <strong>Sizes:</strong> S, M, L, XL, XXL
+                <div class="sizes">
+                    <span>Sizes:</span>
+
+                    <button type="button" onclick="selectSize(this)">S</button>
+                    <button type="button" onclick="selectSize(this)">M</button>
+                    <button type="button" onclick="selectSize(this)">L</button>
+                    <button type="button" onclick="selectSize(this)">XL</button>
+                    <button type="button" onclick="selectSize(this)">XXL</button>
                 </div>
 
-                <strong class="product-price">
-                    Rs. 2,499
-                </strong>
+                <div class="product-bottom">
 
-                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Men%20Jeans."
-                   class="order-btn"
-                   target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    Order Now
-                </a>
+                    <strong>Rs. 2,499</strong>
+
+                    <button
+                        type="button"
+                        class="order-btn"
+                        onclick="orderProduct(this)"
+                        data-product="Men Jeans"
+                        data-price="Rs. 2,499">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Order Now
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- Women's Jeans -->
-        <div class="product-card" data-category="women jeans">
+        <!-- Women Jeans -->
+        <div class="product-card">
 
             <div class="product-image">
                 <img src="women-jeans.jpg" alt="Women Jeans">
@@ -172,40 +146,47 @@
 
             <div class="product-info">
 
-                <span class="product-category">
-                    WOMEN • JEANS
-                </span>
+                <small>WOMEN • JEANS</small>
 
-                <h3>
-                    Women Jeans
-                </h3>
+                <h3>Women Jeans</h3>
 
                 <p>
                     Stylish and comfortable jeans for everyday wear.
                 </p>
 
-                <div class="product-sizes">
-                    <strong>Sizes:</strong> S, M, L, XL, XXL
+                <div class="sizes">
+                    <span>Sizes:</span>
+
+                    <button type="button" onclick="selectSize(this)">S</button>
+                    <button type="button" onclick="selectSize(this)">M</button>
+                    <button type="button" onclick="selectSize(this)">L</button>
+                    <button type="button" onclick="selectSize(this)">XL</button>
+                    <button type="button" onclick="selectSize(this)">XXL</button>
                 </div>
 
-                <strong class="product-price">
-                    Rs. 2,999
-                </strong>
+                <div class="product-bottom">
 
-                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Women%20Jeans."
-                   class="order-btn"
-                   target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    Order Now
-                </a>
+                    <strong>Rs. 2,999</strong>
+
+                    <button
+                        type="button"
+                        class="order-btn"
+                        onclick="orderProduct(this)"
+                        data-product="Women Jeans"
+                        data-price="Rs. 2,999">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Order Now
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- Men's Jacket -->
-        <div class="product-card" data-category="men jackets">
+        <!-- Men Jacket -->
+        <div class="product-card">
 
             <div class="product-image">
                 <img src="men-jacket.jpg" alt="Men Jacket">
@@ -213,40 +194,47 @@
 
             <div class="product-info">
 
-                <span class="product-category">
-                    MEN • JACKETS
-                </span>
+                <small>MEN • JACKETS</small>
 
-                <h3>
-                    Men Jacket
-                </h3>
+                <h3>Men Jacket</h3>
 
                 <p>
                     Premium jacket with a modern stylish look.
                 </p>
 
-                <div class="product-sizes">
-                    <strong>Sizes:</strong> S, M, L, XL, XXL
+                <div class="sizes">
+                    <span>Sizes:</span>
+
+                    <button type="button" onclick="selectSize(this)">S</button>
+                    <button type="button" onclick="selectSize(this)">M</button>
+                    <button type="button" onclick="selectSize(this)">L</button>
+                    <button type="button" onclick="selectSize(this)">XL</button>
+                    <button type="button" onclick="selectSize(this)">XXL</button>
                 </div>
 
-                <strong class="product-price">
-                    Rs. 3,499
-                </strong>
+                <div class="product-bottom">
 
-                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Men%20Jacket."
-                   class="order-btn"
-                   target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    Order Now
-                </a>
+                    <strong>Rs. 3,499</strong>
+
+                    <button
+                        type="button"
+                        class="order-btn"
+                        onclick="orderProduct(this)"
+                        data-product="Men Jacket"
+                        data-price="Rs. 3,499">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Order Now
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- Women's Jacket -->
-        <div class="product-card" data-category="women jackets">
+        <!-- Women Jacket -->
+        <div class="product-card">
 
             <div class="product-image">
                 <img src="women-jacket.jpg" alt="Women Jacket">
@@ -254,40 +242,47 @@
 
             <div class="product-info">
 
-                <span class="product-category">
-                    WOMEN • JACKETS
-                </span>
+                <small>WOMEN • JACKETS</small>
 
-                <h3>
-                    Women Jacket
-                </h3>
+                <h3>Women Jacket</h3>
 
                 <p>
                     Trendy denim jacket designed for modern style.
                 </p>
 
-                <div class="product-sizes">
-                    <strong>Sizes:</strong> S, M, L, XL, XXL
+                <div class="sizes">
+                    <span>Sizes:</span>
+
+                    <button type="button" onclick="selectSize(this)">S</button>
+                    <button type="button" onclick="selectSize(this)">M</button>
+                    <button type="button" onclick="selectSize(this)">L</button>
+                    <button type="button" onclick="selectSize(this)">XL</button>
+                    <button type="button" onclick="selectSize(this)">XXL</button>
                 </div>
 
-                <strong class="product-price">
-                    Rs. 3,999
-                </strong>
+                <div class="product-bottom">
 
-                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Women%20Jacket."
-                   class="order-btn"
-                   target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    Order Now
-                </a>
+                    <strong>Rs. 3,999</strong>
+
+                    <button
+                        type="button"
+                        class="order-btn"
+                        onclick="orderProduct(this)"
+                        data-product="Women Jacket"
+                        data-price="Rs. 3,999">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Order Now
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- Men's Pants -->
-        <div class="product-card" data-category="men pants">
+        <!-- Men Pants -->
+        <div class="product-card">
 
             <div class="product-image">
                 <img src="men-pants.jpg" alt="Men Pants">
@@ -295,40 +290,47 @@
 
             <div class="product-info">
 
-                <span class="product-category">
-                    MEN • PANTS
-                </span>
+                <small>MEN • PANTS</small>
 
-                <h3>
-                    Men Pants
-                </h3>
+                <h3>Men Pants</h3>
 
                 <p>
                     Comfortable premium pants for everyday style.
                 </p>
 
-                <div class="product-sizes">
-                    <strong>Sizes:</strong> S, M, L, XL, XXL
+                <div class="sizes">
+                    <span>Sizes:</span>
+
+                    <button type="button" onclick="selectSize(this)">S</button>
+                    <button type="button" onclick="selectSize(this)">M</button>
+                    <button type="button" onclick="selectSize(this)">L</button>
+                    <button type="button" onclick="selectSize(this)">XL</button>
+                    <button type="button" onclick="selectSize(this)">XXL</button>
                 </div>
 
-                <strong class="product-price">
-                    Rs. 2,499
-                </strong>
+                <div class="product-bottom">
 
-                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Men%20Pants."
-                   class="order-btn"
-                   target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    Order Now
-                </a>
+                    <strong>Rs. 2,499</strong>
+
+                    <button
+                        type="button"
+                        class="order-btn"
+                        onclick="orderProduct(this)"
+                        data-product="Men Pants"
+                        data-price="Rs. 2,499">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Order Now
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- Women's Pants -->
-        <div class="product-card" data-category="women pants">
+        <!-- Women Pants -->
+        <div class="product-card">
 
             <div class="product-image">
                 <img src="women-pants.jpg" alt="Women Pants">
@@ -336,37 +338,43 @@
 
             <div class="product-info">
 
-                <span class="product-category">
-                    WOMEN • PANTS
-                </span>
+                <small>WOMEN • PANTS</small>
 
-                <h3>
-                    Women Pants
-                </h3>
+                <h3>Women Pants</h3>
 
                 <p>
                     Modern-fit pants with premium comfort.
                 </p>
 
-                <div class="product-sizes">
-                    <strong>Sizes:</strong> S, M, L, XL, XXL
+                <div class="sizes">
+                    <span>Sizes:</span>
+
+                    <button type="button" onclick="selectSize(this)">S</button>
+                    <button type="button" onclick="selectSize(this)">M</button>
+                    <button type="button" onclick="selectSize(this)">L</button>
+                    <button type="button" onclick="selectSize(this)">XL</button>
+                    <button type="button" onclick="selectSize(this)">XXL</button>
                 </div>
 
-                <strong class="product-price">
-                    Rs. 2,999
-                </strong>
+                <div class="product-bottom">
 
-                <a href="https://wa.me/923295544103?text=Hello%20HaroonX%20Fashion,%20I%20want%20to%20order%20Women%20Pants."
-                   class="order-btn"
-                   target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    Order Now
-                </a>
+                    <strong>Rs. 2,999</strong>
+
+                    <button
+                        type="button"
+                        class="order-btn"
+                        onclick="orderProduct(this)"
+                        data-product="Women Pants"
+                        data-price="Rs. 2,999">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Order Now
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
-
 
     </div>
 
