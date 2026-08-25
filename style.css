@@ -836,3 +836,261 @@ footer p {
     }
 
 }
+ /* =========================
+   BEST SELLERS SECTION
+========================= */
+
+.best-sellers {
+    padding: 100px 8%;
+    background: #15151f;
+}
+
+.best-sellers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.best-seller-card {
+    background: #1e1e28;
+    border: 1px solid #30303d;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.best-seller-card:hover {
+    transform: translateY(-10px);
+    border-color: #ff7a00;
+}
+
+.best-seller-image {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+    background: #111;
+}
+
+.best-seller-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.best-seller-card:hover .best-seller-image img {
+    transform: scale(1.08);
+}
+
+.best-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    background: #ff7a00;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.new-badge {
+    background: #28c76f;
+}
+
+.best-seller-info {
+    padding: 25px;
+}
+
+.best-seller-info h3 {
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.best-seller-info p {
+    color: #b8b8c2;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.best-seller-info strong {
+    display: block;
+    color: #ff7a00;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.best-seller-info .details-btn {
+    width: 100%;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .best-sellers-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .best-sellers {
+        padding: 70px 5%;
+    }
+
+    .best-sellers-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .best-seller-image {
+        height: 320px;
+    }
+
+}
+
+/* =========================
+   BEST SELLERS SECTION
+========================= */
+
+.best-sellers {
+    padding: 100px 6%;
+    background: #15151f;
+}
+
+.best-sellers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 50px auto 0;
+}
+
+.best-seller-card {
+    background: #20212b;
+    border: 1px solid #343542;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.best-seller-card:hover {
+    transform: translateY(-10px);
+    border-color: #ff7a00;
+}
+
+.best-seller-image {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+    background: #111;
+}
+
+.best-seller-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.4s ease;
+}
+
+.best-seller-card:hover .best-seller-image img {
+    transform: scale(1.08);
+}
+
+.best-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    background: #ff7a00;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.new-badge {
+    background: #22c55e;
+}
+
+.best-seller-info {
+    padding: 30px;
+}
+
+.best-seller-info h3 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #f5f5f5;
+}
+
+.best-seller-info p {
+    color: #b5b5c0;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.best-seller-info strong {
+    display: block;
+    color: #ff7a00;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.best-seller-info .details-btn {
+    width: 100%;
+    background: #ff7a00;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.best-seller-info .details-btn:hover {
+    background: #e66d00;
+    transform: translateY(-2px);
+}
+
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .best-sellers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .best-seller-image {
+        height: 400px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .best-sellers {
+        padding: 70px 5%;
+    }
+
+    .best-seller-image {
+        height: 300px;
+    }
+
+    .best-seller-info h3 {
+        font-size: 26px;
+    }
+
+}
