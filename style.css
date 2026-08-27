@@ -2029,3 +2029,38 @@ header.scrolled .navbar {
     }
 
 }
+/* =========================
+   BACK TO TOP - REAL MOBILE FIX
+========================= */
+
+@media (max-width: 600px) {
+
+    #backToTop {
+        display: flex !important;
+
+        position: fixed !important;
+
+        right: 18px !important;
+        bottom: 20px !important;
+
+        width: 46px !important;
+        height: 46px !important;
+
+        z-index: 99999 !important;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(20px);
+
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    #backToTop.show {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+    }
+}
