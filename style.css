@@ -1094,3 +1094,377 @@ footer p {
     }
 
 }
+  css
+/* =========================
+   CUSTOMER REVIEWS
+========================= */
+
+.reviews {
+    padding: 100px 6%;
+    background: #15151f;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 50px auto 0;
+}
+
+.review-card {
+    background: #20212b;
+    border: 1px solid #343542;
+    border-radius: 20px;
+    padding: 30px;
+    transition: 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-8px);
+    border-color: #ff7a00;
+}
+
+.stars {
+    color: #ff7a00;
+    font-size: 24px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.review-text {
+    color: #b8b8c2;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.customer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.customer-avatar {
+    width: 50px;
+    height: 50px;
+    background: #ff7a00;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.customer h4 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.customer span {
+    color: #a0a0aa;
+    font-size: 14px;
+}
+
+
+/* =========================
+   REVIEWS MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .reviews {
+        padding: 70px 5%;
+    }
+
+    .review-card {
+        padding: 25px;
+    }
+
+}
+
+  css
+/* =========================
+   PROFESSIONAL FOOTER
+========================= */
+
+.main-footer {
+    background: #101016;
+    padding: 70px 6% 0;
+    border-top: 1px solid #30303d;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.3fr;
+    gap: 60px;
+    padding-bottom: 50px;
+}
+
+.footer-column .logo {
+    margin-bottom: 20px;
+}
+
+.footer-brand p {
+    color: #a0a0aa;
+    line-height: 1.8;
+    max-width: 350px;
+    margin-bottom: 25px;
+}
+
+/* Social Icons */
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #3a3a45;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #ff7a00;
+    border-color: #ff7a00;
+    transform: translateY(-3px);
+}
+
+
+/* Footer Columns */
+
+.footer-column h3 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 22px;
+}
+
+.footer-column > a {
+    display: block;
+    color: #a0a0aa;
+    text-decoration: none;
+    margin-bottom: 14px;
+    transition: 0.3s ease;
+}
+
+.footer-column > a:hover {
+    color: #ff7a00;
+    padding-left: 5px;
+}
+
+
+/* Contact */
+
+.footer-column p {
+    color: #a0a0aa;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.footer-column p i {
+    color: #ff7a00;
+    width: 25px;
+}
+
+
+/* Footer Bottom */
+
+.footer-bottom {
+    border-top: 1px solid #30303d;
+    padding: 25px 0;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #777782;
+    margin: 0;
+}
+
+
+/* =========================
+   FOOTER RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .footer-brand {
+        grid-column: span 2;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .main-footer {
+        padding: 60px 7% 0;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .footer-brand {
+        grid-column: span 1;
+    }
+
+}
+
+   css
+/* =========================
+   NEWSLETTER SECTION
+========================= */
+
+.newsletter {
+    padding: 100px 6%;
+    background: #15151f;
+}
+
+.newsletter-content {
+    max-width: 1200px;
+    margin: auto;
+    background: #20212b;
+    border: 1px solid #343542;
+    border-radius: 25px;
+    padding: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.newsletter-text {
+    flex: 1;
+}
+
+.newsletter-text > p:first-child {
+    color: #ff7a00;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.newsletter-text h2 {
+    font-size: 42px;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.newsletter-text h2 span {
+    color: #ff7a00;
+}
+
+.newsletter-description {
+    color: #b8b8c2;
+    line-height: 1.7;
+    max-width: 500px;
+}
+
+.newsletter-form {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 16px 20px;
+    border: 1px solid #3a3a45;
+    border-radius: 10px;
+    background: #15151f;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.newsletter-form input:focus {
+    border-color: #ff7a00;
+}
+
+.newsletter-form button {
+    background: #ff7a00;
+    color: white;
+    border: none;
+    padding: 16px 28px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background: #e66d00;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   NEWSLETTER RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .newsletter-content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px;
+    }
+
+    .newsletter-form {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .newsletter {
+        padding: 70px 5%;
+    }
+
+    .newsletter-content {
+        padding: 30px 20px;
+    }
+
+    .newsletter-text h2 {
+        font-size: 32px;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form button {
+        width: 100%;
+    }
+
+}
