@@ -299,20 +299,137 @@ function subscribeNewsletter(event) {
     document.getElementById("newsletter-email").value = "";
 }
 
-   // =========================
-// MOBILE HAMBURGER MENU
-// =========================
+document.addEventListener("DOMContentLoaded", function () {
 
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+            });
+        });
+
+    }
+
 });
 
-// Menu link par click karne ke baad menu close
-document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
+  // ==============================
+// SCROLL REVEAL ANIMATION
+// ==============================
+
+const revealElements = document.querySelectorAll(
+    ".product-card, .best-seller-card, .review-card, .newsletter-content, .about-content, .contact-box"
+);
+
+revealElements.forEach(function (element) {
+    element.classList.add("reveal");
+});
+
+function revealOnScroll() {
+    revealElements.forEach(function (element) {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (elementTop < windowHeight - 100) {
+            element.classList.add("active");
+        }
     });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+// Page load par visible elements check karo
+revealOnScroll();
+
+  // ==============================
+// NAVBAR SCROLL EFFECT
+// ==============================
+
+window.addEventListener("scroll", function () {
+
+    const header = document.querySelector("header");
+
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+
+});
+
+// ==============================
+// ACTIVE NAVBAR LINK
+// ==============================
+
+const sections = document.querySelectorAll("section[id]");
+const navLinksItems = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", function () {
+
+    let currentSection = "";
+
+    sections.forEach(function (section) {
+
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.offsetHeight;
+
+        if (
+            window.scrollY >= sectionTop &&
+            window.scrollY < sectionTop + sectionHeight
+        ) {
+            currentSection = section.getAttribute("id");
+        }
+
+    });
+
+    navLinksItems.forEach(function (link) {
+
+        link.classList.remove("active-link");
+
+        if (link.getAttribute("href") === "#" + currentSection) {
+            link.classList.add("active-link");
+        }
+
+    });
+
+});
+
+// ==============================
+// BACK TO TOP BUTTON
+// ==============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const backToTop = document.getElementById("backToTop");
+
+    if (!backToTop) {
+        return;
+    }
+
+    window.addEventListener("scroll", function () {
+
+        if (window.scrollY >= 300) {
+            backToTop.classList.add("show");
+        } else {
+            backToTop.classList.remove("show");
+        }
+
+    });
+
+    backToTop.addEventListener("click", function () {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
 });
