@@ -23,9 +23,10 @@
         </div>
 
         <!-- Hamburger Button -->
-        <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
-            ☰
-        </button>
+       <button class="menu-toggle" id="menuToggle" aria-label="Open Menu"
+    onclick="document.getElementById('navLinks').classList.toggle('active')">
+    ☰
+</button>
 
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
@@ -888,6 +889,11 @@
     </div>
 
 </footer>
+<!-- BACK TO TOP BUTTON -->
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    ↑
+</button>
 
     <script src="script.js"></script>
 
