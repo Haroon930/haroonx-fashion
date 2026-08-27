@@ -282,7 +282,6 @@ document.addEventListener("keydown", function(event) {
 
 });
 
-   javascript
 function subscribeNewsletter(event) {
 
     event.preventDefault();
