@@ -1468,3 +1468,71 @@ footer p {
     }
 
 }
+
+   /* =========================
+   MOBILE HAMBURGER MENU
+========================= */
+
+/* Hamburger button - desktop par hidden */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: inherit;
+}
+
+
+/* =========================
+   MOBILE NAVBAR
+========================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        position: relative;
+    }
+
+    /* Hamburger show */
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+        z-index: 1001;
+    }
+
+    /* Mobile menu */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        gap: 15px;
+        z-index: 1000;
+    }
+
+    /* Menu open hone par */
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* Mobile menu links */
+    .nav-links li {
+        list-style: none;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px;
+    }
+
+    /* Order button mobile */
+    .nav-btn {
+        display: none;
+    }
+
+}
