@@ -83,8 +83,7 @@ function orderProduct(button) {
 
 function showProductDetails(button) {
 
-    const productCard = button.closest(".product-card");
-
+   const productCard = button.closest(".product-card, .best-seller-card");
     const product = button.dataset.product;
     const price = button.dataset.price;
     const description = button.dataset.description;
@@ -282,3 +281,21 @@ document.addEventListener("keydown", function(event) {
     }
 
 });
+
+   javascript
+function subscribeNewsletter(event) {
+
+    event.preventDefault();
+
+    const email = document
+        .getElementById("newsletter-email")
+        .value;
+
+    alert(
+        "Thank you for subscribing! 🎉\n\n" +
+        "We will send fashion updates to:\n" +
+        email
+    );
+
+    document.getElementById("newsletter-email").value = "";
+}
