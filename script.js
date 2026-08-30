@@ -433,3 +433,441 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+   // ==============================
+// CART OPEN / CLOSE
+// ==============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const cartBtn = document.getElementById("cartBtn");
+    const cartSidebar = document.getElementById("cartSidebar");
+    const cartOverlay = document.getElementById("cartOverlay");
+    const cartClose = document.getElementById("cartClose");
+
+    function openCart() {
+        cartSidebar.classList.add("active");
+        cartOverlay.classList.add("active");
+    }
+
+    function closeCart() {
+        cartSidebar.classList.remove("active");
+        cartOverlay.classList.remove("active");
+    }
+
+    if (cartBtn) {
+        cartBtn.addEventListener("click", openCart);
+    }
+
+    if (cartClose) {
+        cartClose.addEventListener("click", closeCart);
+    }
+
+    if (cartOverlay) {
+        cartOverlay.addEventListener("click", closeCart);
+    }
+
+});
+
+// ==========================================
+// SELECT PRODUCT SIZE
+// ==========================================
+
+function selectSize(button) {
+
+    const productCard = button.closest(".product-card");
+
+    // Is product ke saare size buttons
+    const sizes = productCard.querySelectorAll(".sizes button");
+
+    sizes.forEach(function(btn) {
+        btn.classList.remove("selected");
+    });
+
+    // Selected size
+    button.classList.add("selected");
+
+    // Save selected size
+    productCard.dataset.selectedSize = button.textContent.trim();
+}
+
+
+// ==========================================
+// ADD TO CART
+// ==========================================
+
+function addToCart(button) {
+
+    const product = button.dataset.product;
+    const price = Number(button.dataset.price);
+
+    const productCard = button.closest(".product-card");
+
+    // Selected size
+    const selectedSize = productCard.dataset.selectedSize;
+
+    // Size required
+    if (!selectedSize) {
+        alert("Please select a size first! 📏");
+        return;
+    }
+
+    // Get cart
+    let cart = JSON.parse(localStorage.getItem("haroonxCart")) || [];
+
+    // Check same product + same size
+    const existingItem = cart.find(function(item) {
+        return item.product === product &&
+               item.size === selectedSize;
+    });
+
+    if (existingItem) {
+
+        existingItem.quantity += 1;
+
+    } else {
+
+        cart.push({
+            product: product,
+            price: price,
+            size: selectedSize,
+            quantity: 1
+        });
+
+    }
+
+    // Save cart
+    localStorage.setItem("haroonxCart", JSON.stringify(cart));
+
+    // Update everything
+    updateCartCount();
+    renderCart();
+
+    alert(
+        product +
+        " (Size: " +
+        selectedSize +
+        ") cart mein add ho gaya! 🛒"
+    );
+}
+
+
+// ==========================================
+// UPDATE CART COUNT
+// ==========================================
+
+function updateCartCount() {
+
+    const cart = JSON.parse(localStorage.getItem("haroonxCart")) || [];
+
+    const cartCount = document.getElementById("cartCount");
+
+    if (!cartCount) return;
+
+    // Total quantity
+    let count = 0;
+
+    cart.forEach(function(item) {
+        count += item.quantity || 1;
+    });
+
+    cartCount.textContent = count;
+}
+
+
+// ==========================================
+// DISPLAY CART
+// ==========================================
+
+function renderCart() {
+
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+
+    if (!cartItems || !cartTotal) return;
+
+    let cart = JSON.parse(localStorage.getItem("haroonxCart")) || [];
+
+    // Empty cart
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+            <p class="empty-cart">
+                Your cart is empty.
+            </p>
+        `;
+
+        cartTotal.textContent = "Rs. 0";
+
+        updateCartCount();
+
+        return;
+    }
+
+    let total = 0;
+
+    cartItems.innerHTML = "";
+
+    cart.forEach(function(item, index) {
+
+        const quantity = item.quantity || 1;
+
+        const itemTotal = Number(item.price) * quantity;
+
+        total += itemTotal;
+
+        const cartItem = document.createElement("div");
+
+        cartItem.className = "cart-item";
+
+        cartItem.innerHTML = `
+            <div class="cart-item-info">
+
+                <h3>${item.product}</h3>
+
+                <p>Size: ${item.size || "Not selected"}</p>
+
+                <p>Rs. ${Number(item.price).toLocaleString()}</p>
+
+                <div class="quantity-controls">
+
+                    <button
+                        type="button"
+                        onclick="decreaseQuantity(${index})">
+                        −
+                    </button>
+
+                    <span>${quantity}</span>
+
+                    <button
+                        type="button"
+                        onclick="increaseQuantity(${index})">
+                        +
+                    </button>
+
+                </div>
+
+                <strong>
+                    Total: Rs. ${itemTotal.toLocaleString()}
+                </strong>
+
+            </div>
+
+            <button
+                type="button"
+                class="remove-cart-btn"
+                onclick="removeFromCart(${index})">
+                ❌ Remove
+            </button>
+        `;
+
+        cartItems.appendChild(cartItem);
+    });
+
+    cartTotal.textContent =
+        "Rs. " + total.toLocaleString();
+
+    updateCartCount();
+}
+
+
+// ==========================================
+// INCREASE QUANTITY
+// ==========================================
+
+function increaseQuantity(index) {
+
+    let cart = JSON.parse(localStorage.getItem("haroonxCart")) || [];
+
+    if (!cart[index]) return;
+
+    cart[index].quantity =
+        (cart[index].quantity || 1) + 1;
+
+    localStorage.setItem(
+        "haroonxCart",
+        JSON.stringify(cart)
+    );
+
+    renderCart();
+}
+
+
+// ==========================================
+// DECREASE QUANTITY
+// ==========================================
+
+function decreaseQuantity(index) {
+
+    let cart = JSON.parse(localStorage.getItem("haroonxCart")) || [];
+
+    if (!cart[index]) return;
+
+    const quantity = cart[index].quantity || 1;
+
+    if (quantity > 1) {
+
+        cart[index].quantity = quantity - 1;
+
+    } else {
+
+        cart.splice(index, 1);
+
+    }
+
+    localStorage.setItem(
+        "haroonxCart",
+        JSON.stringify(cart)
+    );
+
+    renderCart();
+}
+
+
+// ==========================================
+// REMOVE PRODUCT
+// ==========================================
+
+function removeFromCart(index) {
+
+    let cart = JSON.parse(localStorage.getItem("haroonxCart")) || [];
+
+    cart.splice(index, 1);
+
+    localStorage.setItem(
+        "haroonxCart",
+        JSON.stringify(cart)
+    );
+
+    renderCart();
+}
+
+
+// ==========================================
+// OPEN CART
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const cartBtn = document.getElementById("cartBtn");
+    const cartSidebar = document.getElementById("cartSidebar");
+    const cartOverlay = document.getElementById("cartOverlay");
+    const cartClose = document.getElementById("cartClose");
+
+    updateCartCount();
+    renderCart();
+
+    if (cartBtn) {
+
+        cartBtn.addEventListener("click", function() {
+
+            renderCart();
+
+            cartSidebar.classList.add("active");
+            cartOverlay.classList.add("active");
+
+        });
+
+    }
+
+    if (cartClose) {
+
+        cartClose.addEventListener("click", function() {
+
+            cartSidebar.classList.remove("active");
+            cartOverlay.classList.remove("active");
+
+        });
+
+    }
+
+    if (cartOverlay) {
+
+        cartOverlay.addEventListener("click", function() {
+
+            cartSidebar.classList.remove("active");
+            cartOverlay.classList.remove("active");
+
+        });
+
+    }
+
+});
+
+   // ==========================================
+// ORDER CART ON WHATSAPP
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const checkoutBtn = document.getElementById("checkoutBtn");
+
+    if (!checkoutBtn) return;
+
+    checkoutBtn.addEventListener("click", function () {
+
+        const cart = JSON.parse(
+            localStorage.getItem("haroonxCart")
+        ) || [];
+
+        // Check empty cart
+        if (cart.length === 0) {
+            alert("Your cart is empty! 🛒");
+            return;
+        }
+
+        let message = "Hello HaroonX Fashion! 👋\n\n";
+        message += "I want to place an order:\n\n";
+
+        let total = 0;
+
+        cart.forEach(function (item, index) {
+
+            const quantity = item.quantity || 1;
+            const price = Number(item.price);
+            const itemTotal = price * quantity;
+
+            total += itemTotal;
+
+            message += `${index + 1}. ${item.product}\n`;
+            message += `Size: ${item.size || "Not selected"}\n`;
+            message += `Price: Rs. ${price.toLocaleString()}\n`;
+            message += `Quantity: ${quantity}\n`;
+            message += `Item Total: Rs. ${itemTotal.toLocaleString()}\n\n`;
+
+        });
+
+        message += "--------------------------\n";
+        message += `Grand Total: Rs. ${total.toLocaleString()}\n\n`;
+        message += "Please confirm my order. Thank you! ❤️";
+
+
+        // HaroonX WhatsApp number
+        const phoneNumber = "923295544103";
+
+        const whatsappURL =
+            "https://wa.me/" +
+            phoneNumber +
+            "?text=" +
+            encodeURIComponent(message);
+
+
+        // Open WhatsApp
+       const whatsappWindow = window.open(whatsappURL, "_blank");
+
+if (whatsappWindow) {
+
+    // Cart clear
+    localStorage.removeItem("haroonxCart");
+
+    // Cart count aur items update
+    updateCartCount();
+    renderCart();
+
+} else {
+
+    alert("Please allow pop-ups to open WhatsApp.");
+}
+    });
+
+});
