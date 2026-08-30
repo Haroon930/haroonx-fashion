@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<script src="script.js"></script>
 
 <body>
 
@@ -26,7 +25,6 @@
       <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
     ☰
 </button>
-
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#products">Products</a></li>
@@ -37,7 +35,12 @@
         <a href="https://wa.me/923295544103" class="nav-btn" target="_blank">
             Order Now
         </a>
+     <!-- Cart Button -->
+<button class="cart-btn" id="cartBtn" aria-label="Shopping Cart">
+    🛒
+    <span id="cartCount">0</span>
 
+</button>
     </nav>
 </header>
 
@@ -136,6 +139,15 @@
                     </button>
 
                     <button
+    type="button"
+    class="add-cart-btn"
+    onclick="addToCart(this)"
+    data-product="Men Jeans"
+    data-price="2499">
+    🛒 Add to Cart
+</button>
+
+                    <button
                         type="button"
                         class="order-btn"
                         onclick="orderProduct(this)"
@@ -192,6 +204,15 @@
                         data-description="Stylish and comfortable jeans for everyday wear.">
                         View Details
                     </button>
+
+<button
+    type="button"
+    class="add-cart-btn"
+    onclick="addToCart(this)"
+    data-product="Women Jeans"
+    data-price="2999">
+    🛒 Add to Cart
+</button>
 
                     <button
                         type="button"
@@ -251,6 +272,15 @@
                         View Details
                     </button>
 
+<button
+    type="button"
+    class="add-cart-btn"
+    onclick="addToCart(this)"
+    data-product="Men Jacket"
+    data-price="3499">
+    🛒 Add to Cart
+</button>
+
                     <button
                         type="button"
                         class="order-btn"
@@ -309,6 +339,15 @@
                         View Details
                     </button>
 
+<button
+    type="button"
+    class="add-cart-btn"
+    onclick="addToCart(this)"
+    data-product="Women Jacket"
+    data-price="3999">
+    🛒 Add to Cart
+</button>
+                    
                     <button
                         type="button"
                         class="order-btn"
@@ -355,29 +394,38 @@
 
                 <div class="product-bottom">
 
-                    <strong>Rs. 2,499</strong>
+    <strong>Rs. 2,499</strong>
 
-                    <button
-                        type="button"
-                        class="details-btn"
-                        onclick="showProductDetails(this)"
-                        data-product="Men Pants"
-                        data-price="Rs. 2,499"
-                        data-description="Comfortable premium pants for everyday style.">
-                        View Details
-                    </button>
+    <button
+        type="button"
+        class="details-btn"
+        onclick="showProductDetails(this)"
+        data-product="Men Pants"
+        data-price="Rs. 2,499"
+        data-description="Comfortable premium pants for everyday style.">
+        View Details
+    </button>
 
-                    <button
-                        type="button"
-                        class="order-btn"
-                        onclick="orderProduct(this)"
-                        data-product="Men Pants"
-                        data-price="Rs. 2,499">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        Order Now
-                    </button>
+    <button
+        type="button"
+        class="add-cart-btn"
+        onclick="addToCart(this)"
+        data-product="Men Pants"
+        data-price="2499">
+        🛒 Add to Cart
+    </button>
 
-                </div>
+    <button
+        type="button"
+        class="order-btn"
+        onclick="orderProduct(this)"
+        data-product="Men Pants"
+        data-price="Rs. 2,499">
+        <i class="fa-brands fa-whatsapp"></i>
+        Order Now
+    </button>
+
+</div>
 
             </div>
 
@@ -424,6 +472,15 @@
                         data-description="Modern-fit pants with premium comfort.">
                         View Details
                     </button>
+
+                    <button
+    type="button"
+    class="add-cart-btn"
+    onclick="addToCart(this)"
+    data-product="Women Pants"
+    data-price="2999">
+    🛒 Add to Cart
+</button>
 
                     <button
                         type="button"
@@ -893,6 +950,39 @@
 <button id="backToTop" class="back-to-top" aria-label="Back to top">
     ↑
 </button>
+
+<!-- SHOPPING CART -->
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<div class="cart-sidebar" id="cartSidebar">
+
+    <div class="cart-header">
+        <h2>Your Cart 🛒</h2>
+
+        <button class="cart-close" id="cartClose">
+            &times;
+
+        </button>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+        <p class="empty-cart">Your cart is empty.</p>
+    </div>
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+            <span>Total:</span>
+            <strong id="cartTotal">Rs. 0</strong>
+        </div>
+
+        <button class="checkout-btn" id="checkoutBtn">
+            Order on WhatsApp
+        </button>
+
+    </div>
+
+</div>
 
     <script src="script.js"></script>
 
