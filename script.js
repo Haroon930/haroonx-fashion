@@ -502,6 +502,7 @@ function addToCart(button) {
     const price = Number(button.dataset.price);
 
     const productCard = button.closest(".product-card");
+    const productImage = productCard.querySelector(".product-image img").src;
 
     // Selected size
     const selectedSize = productCard.dataset.selectedSize;
@@ -528,11 +529,12 @@ function addToCart(button) {
     } else {
 
         cart.push({
-            product: product,
-            price: price,
-            size: selectedSize,
-            quantity: 1
-        });
+    product: product,
+    price: price,
+    size: selectedSize,
+    quantity: 1,
+    image: productImage
+});
 
     }
 
@@ -621,45 +623,52 @@ function renderCart() {
         cartItem.className = "cart-item";
 
         cartItem.innerHTML = `
-            <div class="cart-item-info">
+    <div class="cart-product-image">
+        <img 
+            src="${item.image || ''}" 
+            alt="${item.product}"
+        >
+    </div>
 
-                <h3>${item.product}</h3>
+    <div class="cart-item-info">
 
-                <p>Size: ${item.size || "Not selected"}</p>
+        <h3>${item.product}</h3>
 
-                <p>Rs. ${Number(item.price).toLocaleString()}</p>
+        <p>Size: ${item.size || "Not selected"}</p>
 
-                <div class="quantity-controls">
+        <p>Rs. ${Number(item.price).toLocaleString()}</p>
 
-                    <button
-                        type="button"
-                        onclick="decreaseQuantity(${index})">
-                        −
-                    </button>
-
-                    <span>${quantity}</span>
-
-                    <button
-                        type="button"
-                        onclick="increaseQuantity(${index})">
-                        +
-                    </button>
-
-                </div>
-
-                <strong>
-                    Total: Rs. ${itemTotal.toLocaleString()}
-                </strong>
-
-            </div>
+        <div class="quantity-controls">
 
             <button
                 type="button"
-                class="remove-cart-btn"
-                onclick="removeFromCart(${index})">
-                ❌ Remove
+                onclick="decreaseQuantity(${index})">
+                −
             </button>
-        `;
+
+            <span>${quantity}</span>
+
+            <button
+                type="button"
+                onclick="increaseQuantity(${index})">
+                +
+            </button>
+
+        </div>
+
+        <strong>
+            Total: Rs. ${itemTotal.toLocaleString()}
+        </strong>
+
+    </div>
+
+    <button
+        type="button"
+        class="remove-cart-btn"
+        onclick="removeFromCart(${index})">
+        ❌ Remove
+    </button>
+`;
 
         cartItems.appendChild(cartItem);
     });
@@ -810,15 +819,64 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.getItem("haroonxCart")
         ) || [];
 
-        // Check empty cart
+        // Check cart
         if (cart.length === 0) {
             alert("Your cart is empty! 🛒");
             return;
         }
 
-        let message = "Hello HaroonX Fashion! 👋\n\n";
-        message += "I want to place an order:\n\n";
+        // Customer details
+        const customerName =
+            document.getElementById("customerName").value.trim();
 
+        const customerPhone =
+            document.getElementById("customerPhone").value.trim();
+
+        const customerCity =
+            document.getElementById("customerCity").value.trim();
+
+        const customerAddress =
+            document.getElementById("customerAddress").value.trim();
+
+
+        // Check customer details
+        if (!customerName) {
+            alert("Please enter your name.");
+            return;
+        }
+
+        if (!customerPhone) {
+            alert("Please enter your phone number.");
+            return;
+        }
+
+        if (!customerCity) {
+            alert("Please enter your city.");
+            return;
+        }
+
+        if (!customerAddress) {
+            alert("Please enter your complete delivery address.");
+            return;
+        }
+
+
+        // WhatsApp message
+        let message =
+            "Hello HaroonX Fashion! 👋\n\n";
+
+        message += "🛍️ *NEW ORDER*\n\n";
+
+        message += "👤 Customer Details\n";
+        message += `Name: ${customerName}\n`;
+        message += `Phone: ${customerPhone}\n`;
+        message += `City: ${customerCity}\n`;
+        message += `Address: ${customerAddress}\n\n`;
+
+        message += "📦 Order Details\n\n";
+
+
+        // Calculate total
         let total = 0;
 
         cart.forEach(function (item, index) {
@@ -837,14 +895,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
+
         message += "--------------------------\n";
-        message += `Grand Total: Rs. ${total.toLocaleString()}\n\n`;
+        message += `💰 Grand Total: Rs. ${total.toLocaleString()}\n\n`;
+
         message += "Please confirm my order. Thank you! ❤️";
 
 
-        // HaroonX WhatsApp number
+        // Your WhatsApp number
         const phoneNumber = "923295544103";
 
+
+        // WhatsApp URL
         const whatsappURL =
             "https://wa.me/" +
             phoneNumber +
@@ -853,21 +915,60 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // Open WhatsApp
-       const whatsappWindow = window.open(whatsappURL, "_blank");
+        const whatsappWindow =
+            window.open(whatsappURL, "_blank");
 
 if (whatsappWindow) {
 
     // Cart clear
     localStorage.removeItem("haroonxCart");
 
-    // Cart count aur items update
+    // Update cart
     updateCartCount();
     renderCart();
 
-} else {
+    // Show order confirmation
+    const orderSuccess =
+        document.getElementById("orderSuccess");
 
-    alert("Please allow pop-ups to open WhatsApp.");
+    if (orderSuccess) {
+        orderSuccess.classList.add("active");
+    }
+
 }
+        
+            else {
+
+            alert(
+                "Please allow pop-ups to open WhatsApp."
+            );
+
+        }
+
     });
+
+});
+
+  // ==========================================
+// CLOSE ORDER CONFIRMATION
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const successClose =
+        document.getElementById("successClose");
+
+    const orderSuccess =
+        document.getElementById("orderSuccess");
+
+    if (successClose && orderSuccess) {
+
+        successClose.addEventListener("click", function () {
+
+            orderSuccess.classList.remove("active");
+
+        });
+
+    }
 
 });
