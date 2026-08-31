@@ -2781,3 +2781,329 @@ header.scrolled .navbar {
     }
 
 }
+
+   /* ==========================================
+   MOBILE RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    /* ---------- BODY ---------- */
+
+    body {
+        overflow-x: hidden;
+    }
+
+
+    /* ---------- NAVBAR ---------- */
+
+    nav {
+        padding: 12px 15px;
+        gap: 10px;
+    }
+
+    nav .logo {
+        font-size: 20px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+
+    /* ---------- PRODUCT GRID ---------- */
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 0 12px;
+    }
+
+
+    /* ---------- PRODUCT CARD ---------- */
+
+    .product-card {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .product-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .product-info {
+        padding: 12px;
+    }
+
+    .product-info h3 {
+        font-size: 17px;
+    }
+
+    .product-info p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+
+    /* ---------- PRODUCT SIZES ---------- */
+
+    .sizes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .sizes button {
+        min-width: 35px;
+        padding: 7px 9px;
+        font-size: 12px;
+    }
+
+
+    /* ---------- PRODUCT BOTTOM ---------- */
+
+    .product-bottom {
+        padding: 12px;
+    }
+
+    .product-bottom strong {
+        font-size: 16px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+
+    /* ---------- PRODUCT BUTTONS ---------- */
+
+    .product-bottom button {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 7px;
+    }
+
+    .details-btn,
+    .add-cart-btn,
+    .order-btn {
+        min-height: 42px;
+        font-size: 13px;
+    }
+
+
+    /* ---------- CART SIDEBAR ---------- */
+
+    .cart-sidebar {
+        width: min(92vw, 400px);
+        max-width: 92vw;
+        box-sizing: border-box;
+    }
+
+    .cart-header {
+        padding: 15px;
+    }
+
+    .cart-header h2 {
+        font-size: 20px;
+    }
+
+    .cart-items {
+        padding: 12px;
+    }
+
+
+    /* ---------- CART ITEM ---------- */
+
+    .cart-item {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+    }
+
+    .cart-item-info h3 {
+        font-size: 16px;
+    }
+
+    .cart-item-info p {
+        font-size: 13px;
+    }
+
+
+    /* ---------- QUANTITY ---------- */
+
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 10px 0;
+    }
+
+    .quantity-controls button {
+        min-width: 34px;
+        height: 34px;
+    }
+
+
+    /* ---------- CUSTOMER DETAILS ---------- */
+
+    .customer-details {
+        padding: 12px;
+        margin-top: 10px;
+    }
+
+    .customer-details h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .customer-details input,
+    .customer-details textarea {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 14px;
+        padding: 11px;
+    }
+
+
+    /* ---------- CART FOOTER ---------- */
+
+    .cart-footer {
+        padding: 12px;
+    }
+
+    .cart-total {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .checkout-btn {
+        width: 100%;
+        min-height: 45px;
+        font-size: 14px;
+    }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE PHONES
+   ========================================== */
+
+@media (max-width: 480px) {
+
+    /* Product cards become single column
+       only on very small screens */
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 15px;
+    }
+
+
+    .product-info h3 {
+        font-size: 19px;
+    }
+
+    .product-info p {
+        font-size: 14px;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        padding: 45px 15px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+
+    /* Cart */
+
+    .cart-sidebar {
+        width: 94vw;
+        max-width: 94vw;
+    }
+
+    .cart-header h2 {
+        font-size: 19px;
+    }
+
+
+    /* Customer form */
+
+    .customer-details {
+        padding: 10px;
+    }
+
+}
+
+  /* ==========================================
+   PRODUCT SEARCH
+========================================== */
+
+.product-search {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto 25px;
+}
+
+.product-search input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 18px;
+    border: 1px solid #444;
+    border-radius: 30px;
+    background: #111;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.product-search input::placeholder {
+    color: #aaa;
+}
+
+.product-search input:focus {
+    border-color: #ff7900;
+    box-shadow: 0 0 10px rgba(255, 121, 0, 0.15);
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .product-search {
+        width: calc(100% - 30px);
+        margin-bottom: 20px;
+    }
+
+    .product-search input {
+        padding: 13px 16px;
+        font-size: 14px;
+    }
+
+}
