@@ -803,7 +803,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-   // ==========================================
+  // ==========================================
 // ORDER CART ON WHATSAPP
 // ==========================================
 
@@ -815,98 +815,154 @@ document.addEventListener("DOMContentLoaded", function () {
 
     checkoutBtn.addEventListener("click", function () {
 
+        // ==========================================
+        // GET CART
+        // ==========================================
+
         const cart = JSON.parse(
+            localStorage.getItem("haroonXCart")
+        ) || JSON.parse(
             localStorage.getItem("haroonxCart")
         ) || [];
 
-        // Check cart
+        // Cart empty check
         if (cart.length === 0) {
+
             alert("Your cart is empty! 🛒");
             return;
+
         }
 
-        // Customer details
+
+        // ==========================================
+        // GET CUSTOMER DETAILS
+        // ==========================================
+
         const customerName =
             document.getElementById("customerName").value.trim();
 
         const customerPhone =
             document.getElementById("customerPhone").value.trim();
 
-        const customerCity =
-            document.getElementById("customerCity").value.trim();
-
         const customerAddress =
             document.getElementById("customerAddress").value.trim();
 
+        const customerCity =
+            document.getElementById("customerCity").value.trim();
 
-        // Check customer details
-        if (!customerName) {
-            alert("Please enter your name.");
+
+        // ==========================================
+        // VALIDATE CUSTOMER DETAILS
+        // ==========================================
+
+        if (
+            !customerName ||
+            !customerPhone ||
+            !customerAddress ||
+            !customerCity
+        ) {
+
+            alert(
+                "Please fill all customer details before placing your order! ⚠️"
+            );
+
             return;
         }
 
-        if (!customerPhone) {
-            alert("Please enter your phone number.");
-            return;
-        }
 
-        if (!customerCity) {
-            alert("Please enter your city.");
-            return;
-        }
+        // ==========================================
+        // CREATE WHATSAPP MESSAGE
+        // ==========================================
 
-        if (!customerAddress) {
-            alert("Please enter your complete delivery address.");
-            return;
-        }
-
-
-        // WhatsApp message
         let message =
             "Hello HaroonX Fashion! 👋\n\n";
 
-        message += "🛍️ *NEW ORDER*\n\n";
+        message +=
+            "CUSTOMER DETAILS\n";
 
-        message += "👤 Customer Details\n";
-        message += `Name: ${customerName}\n`;
-        message += `Phone: ${customerPhone}\n`;
-        message += `City: ${customerCity}\n`;
-        message += `Address: ${customerAddress}\n\n`;
+        message +=
+            "--------------------------\n";
 
-        message += "📦 Order Details\n\n";
+        message +=
+            `Name: ${customerName}\n`;
+
+        message +=
+            `Phone: ${customerPhone}\n`;
+
+        message +=
+            `Address: ${customerAddress}\n`;
+
+        message +=
+            `City: ${customerCity}\n\n`;
 
 
-        // Calculate total
+        message +=
+            "ORDER DETAILS\n";
+
+        message +=
+            "--------------------------\n\n";
+
+
+        // ==========================================
+        // PRODUCTS
+        // ==========================================
+
         let total = 0;
 
         cart.forEach(function (item, index) {
 
             const quantity = item.quantity || 1;
+
             const price = Number(item.price);
+
             const itemTotal = price * quantity;
 
             total += itemTotal;
 
-            message += `${index + 1}. ${item.product}\n`;
-            message += `Size: ${item.size || "Not selected"}\n`;
-            message += `Price: Rs. ${price.toLocaleString()}\n`;
-            message += `Quantity: ${quantity}\n`;
-            message += `Item Total: Rs. ${itemTotal.toLocaleString()}\n\n`;
+
+            message +=
+                `${index + 1}. ${item.product}\n`;
+
+            message +=
+                `Size: ${item.size || "Not selected"}\n`;
+
+            message +=
+                `Price: Rs. ${price.toLocaleString()}\n`;
+
+            message +=
+                `Quantity: ${quantity}\n`;
+
+            message +=
+                `Item Total: Rs. ${itemTotal.toLocaleString()}\n\n`;
 
         });
 
 
-        message += "--------------------------\n";
-        message += `💰 Grand Total: Rs. ${total.toLocaleString()}\n\n`;
+        // ==========================================
+        // GRAND TOTAL
+        // ==========================================
 
-        message += "Please confirm my order. Thank you! ❤️";
+        message +=
+            "--------------------------\n";
+
+        message +=
+            `Grand Total: Rs. ${total.toLocaleString()}\n\n`;
+
+        message +=
+            "Please confirm my order. Thank you! ❤️";
 
 
-        // Your WhatsApp number
+        // ==========================================
+        // WHATSAPP NUMBER
+        // ==========================================
+
         const phoneNumber = "923295544103";
 
 
-        // WhatsApp URL
+        // ==========================================
+        // WHATSAPP URL
+        // ==========================================
+
         const whatsappURL =
             "https://wa.me/" +
             phoneNumber +
@@ -914,30 +970,27 @@ document.addEventListener("DOMContentLoaded", function () {
             encodeURIComponent(message);
 
 
-        // Open WhatsApp
+        // ==========================================
+        // OPEN WHATSAPP
+        // ==========================================
+
         const whatsappWindow =
             window.open(whatsappURL, "_blank");
 
-if (whatsappWindow) {
 
-    // Cart clear
-    localStorage.removeItem("haroonxCart");
+        // ==========================================
+        // CLEAR CART
+        // ==========================================
 
-    // Update cart
-    updateCartCount();
-    renderCart();
+        if (whatsappWindow) {
 
-    // Show order confirmation
-    const orderSuccess =
-        document.getElementById("orderSuccess");
+            localStorage.removeItem("haroonxCart");
+            localStorage.removeItem("haroonXCart");
 
-    if (orderSuccess) {
-        orderSuccess.classList.add("active");
-    }
+            updateCartCount();
+            renderCart();
 
-}
-        
-            else {
+        } else {
 
             alert(
                 "Please allow pop-ups to open WhatsApp."
@@ -972,3 +1025,137 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+  // ==========================================
+// SEARCH + CATEGORY FILTER
+// ==========================================
+
+let currentCategory = "all";
+
+
+// ------------------------------------------
+// CATEGORY FILTER
+// ------------------------------------------
+
+function filterProducts(category, button) {
+
+    currentCategory = category.toLowerCase();
+
+    // Active button
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    filterButtons.forEach(function(btn) {
+        btn.classList.remove("active");
+    });
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    applyProductFilters();
+}
+
+
+// ------------------------------------------
+// SEARCH
+// ------------------------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput =
+        document.getElementById("productSearch");
+
+    if (searchInput) {
+
+        searchInput.addEventListener("input", function () {
+
+            applyProductFilters();
+
+        });
+
+    }
+
+    // Show all products initially
+    applyProductFilters();
+
+});
+
+
+// ------------------------------------------
+// APPLY BOTH FILTERS
+// ------------------------------------------
+
+function applyProductFilters() {
+
+    const searchInput =
+        document.getElementById("productSearch");
+
+    const searchText =
+        searchInput
+            ? searchInput.value.toLowerCase().trim()
+            : "";
+
+    const products =
+        document.querySelectorAll(".product-card");
+
+
+    products.forEach(function(product) {
+
+        const productName =
+            product.querySelector("h3")
+                ?.textContent
+                .toLowerCase() || "";
+
+        const productCategory =
+            product.querySelector("small")
+                ?.textContent
+                .toLowerCase() || "";
+
+        const productDescription =
+            product.querySelector("p")
+                ?.textContent
+                .toLowerCase() || "";
+
+
+        // ----------------------------------
+        // CATEGORY MATCH
+        // ----------------------------------
+
+        let categoryMatch = true;
+
+        if (currentCategory !== "all") {
+
+            categoryMatch =
+                productCategory.includes(currentCategory) ||
+                productName.includes(currentCategory);
+
+        }
+
+
+        // ----------------------------------
+        // SEARCH MATCH
+        // ----------------------------------
+
+        const searchMatch =
+            productName.includes(searchText) ||
+            productCategory.includes(searchText) ||
+            productDescription.includes(searchText);
+
+
+        // ----------------------------------
+        // SHOW / HIDE
+        // ----------------------------------
+
+        if (categoryMatch && searchMatch) {
+
+            product.style.display = "";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
