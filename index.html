@@ -804,9 +804,12 @@
             </h2>
 
             <p>
-                HaroonX Fashion brings modern clothing,
-                premium quality and comfortable designs
-                together in one place.            Our Promise: You never have to choose between style and comfort—you get both in every outfit.
+                HaroonX Fashion gives you modern, high-quality clothes that look great and feel super comfortable.
+What We Offer:
+Modern Style: Clothes designed to keep you looking fresh and stylish.
+
+
+Our Promise: You never have to choose between style and comfort—you get both in every outfit.
             </p>
 
             <p>
@@ -971,6 +974,42 @@
 
     <div class="cart-footer">
 
+        <!-- CUSTOMER DETAILS -->
+
+<div class="customer-details">
+
+    <h3>Customer Details 📦</h3>
+
+    <input
+        type="text"
+        id="customerName"
+        placeholder="Your Name"
+        required
+    >
+
+    <input
+        type="tel"
+        id="customerPhone"
+        placeholder="Phone Number"
+        required
+    >
+
+    <input
+        type="text"
+        id="customerCity"
+        placeholder="City"
+        required
+    >
+
+    <textarea
+        id="customerAddress"
+        placeholder="Complete Delivery Address"
+        rows="3"
+        required
+    ></textarea>
+
+</div>
+
         <div class="cart-total">
             <span>Total:</span>
             <strong id="cartTotal">Rs. 0</strong>
@@ -981,6 +1020,31 @@
         </button>
 
     </div>
+
+</div>
+
+<!-- ORDER CONFIRMATION -->
+
+<div class="order-success" id="orderSuccess">
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+    <h2>Order Request Sent! 🎉</h2>
+
+    <p>
+        Thank you for shopping with
+        <strong>HaroonX Fashion</strong>.
+    </p>
+
+    <p>
+        We will contact you shortly to confirm your order.
+    </p>
+
+    <button type="button" id="successClose">
+        Continue Shopping
+    </button>
 
 </div>
 
