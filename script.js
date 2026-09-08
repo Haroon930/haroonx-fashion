@@ -981,6 +981,20 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+         // ==========================================
+// PHONE NUMBER VALIDATION
+// ==========================================
+
+const cleanPhone = customerPhone.replace(/\D/g, "");
+
+if (cleanPhone.length < 10 || cleanPhone.length > 15) {
+
+    alert(
+        "Please enter a valid phone number. 📱"
+    );
+
+    return;
+}
 
         // ==========================================
         // CREATE WHATSAPP MESSAGE
@@ -1096,13 +1110,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (whatsappWindow) {
 
-            localStorage.removeItem("haroonxCart");
-            localStorage.removeItem("haroonXCart");
+    localStorage.removeItem("haroonxCart");
+    localStorage.removeItem("haroonXCart");
 
-            updateCartCount();
-            renderCart();
+    updateCartCount();
+    renderCart();
 
-        } else {
+    // Show order success popup
+    const orderSuccess =
+        document.getElementById("orderSuccess");
+
+    if (orderSuccess) {
+        orderSuccess.classList.add("active");
+    }
+
+} else {
 
             alert(
                 "Please allow pop-ups to open WhatsApp."
