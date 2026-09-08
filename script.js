@@ -83,13 +83,13 @@ function orderProduct(button) {
 
 function showProductDetails(button) {
 
-   const productCard = button.closest(".product-card, .best-seller-card");
+    const productCard = button.closest(".product-card, .best-seller-card");
+
     const product = button.dataset.product;
     const price = button.dataset.price;
     const description = button.dataset.description;
 
     const imageElement = productCard.querySelector(".product-image img");
-
     const image = imageElement ? imageElement.src : "";
 
     // Remove old popup if already open
@@ -142,17 +142,46 @@ function showProductDetails(button) {
 
                     <div class="modal-size-buttons">
 
-                        <button onclick="selectModalSize(this, 'S')">S</button>
-                        <button onclick="selectModalSize(this, 'M')">M</button>
-                        <button onclick="selectModalSize(this, 'L')">L</button>
-                        <button onclick="selectModalSize(this, 'XL')">XL</button>
-                        <button onclick="selectModalSize(this, 'XXL')">XXL</button>
+                        <button onclick="selectModalSize(this, 'S')">
+                            S
+                        </button>
+
+                        <button onclick="selectModalSize(this, 'M')">
+                            M
+                        </button>
+
+                        <button onclick="selectModalSize(this, 'L')">
+                            L
+                        </button>
+
+                        <button onclick="selectModalSize(this, 'XL')">
+                            XL
+                        </button>
+
+                        <button onclick="selectModalSize(this, 'XXL')">
+                            XXL
+                        </button>
 
                     </div>
 
                 </div>
 
+                <!-- ADD TO CART -->
+
                 <button
+                    type="button"
+                    class="modal-cart-btn"
+                    onclick="addToCartFromModal()">
+
+                    🛒 Add to Cart
+
+                </button>
+
+
+                <!-- WHATSAPP ORDER -->
+
+                <button
+                    type="button"
                     class="modal-order-btn"
                     onclick="orderFromModal()">
 
@@ -177,9 +206,92 @@ function showProductDetails(button) {
     setTimeout(function() {
         modal.classList.add("show");
     }, 10);
-
 }
 
+
+// ==============================
+// ADD TO CART FROM MODAL
+// ==============================
+
+function addToCartFromModal() {
+
+    const modal = document.querySelector(".product-modal");
+
+    if (!modal) {
+        return;
+    }
+
+    const selectedSize = modal.dataset.selectedSize;
+
+    const product = modal.dataset.product;
+
+    const priceText = modal.dataset.price;
+
+    if (!selectedSize) {
+
+        alert("Please select your size first! 📏");
+
+        return;
+    }
+
+    // Convert price text to number
+    const price = parseInt(
+        priceText.replace(/[^\d]/g, "")
+    );
+
+    // Get existing cart
+    let cart = JSON.parse(
+        localStorage.getItem("haroonxCart")
+    ) || [];
+
+    // Check if same product + same size already exists
+    const existingItem = cart.find(function(item) {
+
+        return (
+            item.product === product &&
+            item.size === selectedSize
+        );
+
+    });
+
+    if (existingItem) {
+
+        existingItem.quantity += 1;
+
+    } else {
+
+        cart.push({
+
+            product: product,
+            price: price,
+            size: selectedSize,
+            quantity: 1
+
+        });
+
+    }
+
+    // Save cart
+    localStorage.setItem(
+        "haroonxCart",
+        JSON.stringify(cart)
+    );
+
+    // Update cart
+    updateCartCount();
+    renderCart();
+
+    // Success message
+    alert(
+        product +
+        " (" +
+        selectedSize +
+        ") added to your cart! 🛒"
+    );
+
+    // Close modal
+    closeProductModal();
+}
 
 // ==============================
 // MODAL SIZE
